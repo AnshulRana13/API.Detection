@@ -16,3 +16,8 @@ An optional feature is also developed to retrieve the IP address(es), so we know
  - docker
 
 # Steps require to make service up and running.
+
+ 1.  git clone https://github.com/AnshulRana13/API.Detection.git
+ 2.  build Detectify.ServerDetection.API.sln , Please check with given url in build section for 
+      various platform  https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-build      
+ 3. For visual code / visual studio use can use IIS Express and run the application 

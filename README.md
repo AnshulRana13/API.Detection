@@ -35,13 +35,13 @@ An optional feature is also developed to retrieve the IP address(es), so we know
 
 ## How to use the service
 
- 1. Firstly, Service will Authenticate the user and you need to browse 
+ - Firstly, Service will Authenticate the user and you need to browse 
      https://localhost:44312/api/Auth , either through swagger or postman
      method : Post 
      body :    {"UserName": "anshul",	"Password": "anshul!123" }
      content-Type :  application/json
  
- 2. After successful execution of step 1, you will be issued a JWT token for further  
+ - After successful execution of step 1, you will be issued a JWT token for further  
      authentication, as of now token has expiration time upto 24hrs. response example: 
      {
     "userInfo": {
@@ -54,5 +54,14 @@ An optional feature is also developed to retrieve the IP address(es), so we know
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFuc2h1bCBSYW5hIiwibmJmIjoxNTgyMDI2NDUzLCJleHAiOjE1ODIxMTI4NTMsImlhdCI6MTU4MjAyNjQ1MywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMTIvIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMTIvIn0.2TaY_zLiEdy95coHNitGjFIwg4siR9_o0aLlaFJEJmU",
     "tokenType": "Bearer"
 }
- 3. Now, once we are issued a token we are ready to call actual service 
-      https://localhost:44312/api/dns/lookup/nginx. , either through swagger or postman
+ - Now, once we are issued a token we are ready to call actual service 
+      https://localhost:44312/api/dns/lookup/nginx. , please use postman for calling the service ,  Authorization : Bearer <token> , content-Type :  application/json, method : post, body : [  "google.com",  "facebook.com",  "blog.detectify.com"] 
+ 
+## Scalibilty 
+ - This service can be scalable with bare minmum effort and will support all sort of  
+      technology.
+      
+ - Radis cache and Mongodb service is used for caching and user information respectively.
+ - We can also intgrate Kafka and other messaging queue to talk and intiate other services
+ - I am using infrastruture as a service, which is helping to build service faster.
+ - We can also integrate feature like config server, corellationId, API Gateway etc.

@@ -20,4 +20,39 @@ An optional feature is also developed to retrieve the IP address(es), so we know
  1.  git clone https://github.com/AnshulRana13/API.Detection.git
  2.  build Detectify.ServerDetection.API.sln , Please check with given url in build section for 
       various platform  https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-build      
- 3. For visual code / visual studio use can use IIS Express and run the application 
+ 3. For visual code / visual studio youcan use IIS Express and run the application 
+ 4. Create a Docker Image by building and executing the Dockerfile using the Docker    
+      CLI.When creating the image we also define a friendly name and tag. The name should  
+      refer to the application, in this case aspnet. The tag is a string and commonly used as a 
+      version number, in this case it's v0.1.
+      **docker build -t aspnet-app:v0.1**
+      You can view the Docker Images on your host using
+       **docker images | head -n2**
+ 5. Make sure your network can access Azure services as I am using Azure redis cache
+     service and Azure cosmos db service.     
+ 6. When Services is hosted sucessfully , You can see Swagger index.html page which will 
+     display features of the service.
+
+## How to use the service
+
+ 1. Firstly, Service will Authenticate the user and you need to browse 
+     https://localhost:44312/api/Auth , either through swagger or postman
+     method : Post 
+     body :    {"UserName": "anshul",	"Password": "anshul!123" }
+     content-Type :  application/json
+ 
+ 2. After successful execution of step 1, you will be issued a JWT token for further  
+     authentication, as of now token has expiration time upto 24hrs. response example: 
+     {
+    "userInfo": {
+        "userName": "anshul",
+        "password": null,
+        "firstName": "Anshul",
+        "lastName": "Rana",
+        "fullName": "Anshul Rana"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFuc2h1bCBSYW5hIiwibmJmIjoxNTgyMDI2NDUzLCJleHAiOjE1ODIxMTI4NTMsImlhdCI6MTU4MjAyNjQ1MywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMTIvIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMTIvIn0.2TaY_zLiEdy95coHNitGjFIwg4siR9_o0aLlaFJEJmU",
+    "tokenType": "Bearer"
+}
+ 3. Now, once we are issued a token we are ready to call actual service 
+      https://localhost:44312/api/dns/lookup/nginx. , either through swagger or postman

@@ -59,9 +59,9 @@ An optional feature is also developed to retrieve the IP address(es), so we know
  
 ## Scalibilty 
  - This service can be scalable with bare minmum effort and will support all sort of  
-      technology.
+      technologies.
       
  - Radis cache and Mongodb service is used for caching and user information respectively.
  - We can also intgrate Kafka and other messaging queue to talk and intiate other services
- - I am using infrastruture as a service, which is helping to build service faster.
+ - I am using infrastruture as a service, which is helping me to build service faster.
  - We can also integrate feature like config server, corellationId, API Gateway etc.

@@ -9,7 +9,7 @@ EXPOSE 80
 EXPOSE 443
 
 COPY "Detectify.ServerDetection.API.Web.csproj" .
-RUN dotnet restore 
+RUN dotnet restore "Detectify.ServerDetection.API.Web.csproj"
 COPY . .
 
 RUN dotnet build "Detectify.ServerDetection.API.Web.csproj" -c Release -o /app/build

@@ -10,11 +10,11 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
-COPY *.csproj ./
-RUN dotnet restore "Detectify.ServerDetection.API.Web.csproj"
+COPY ["Detectify.ServerDetection.API.Host/Detectify.ServerDetection.API.Web.csproj", "Detectify.ServerDetection.API.Host/"]
+RUN dotnet restore "Detectify.ServerDetection.API.Host/Detectify.ServerDetection.API.Web.csproj"
 COPY . .
 WORKDIR "/src/Detectify.ServerDetection.API.Host"
-RUN dotnet publish -c Release -o out
+RUN dotnet build "Detectify.ServerDetection.API.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "Detectify.ServerDetection.API.Web.csproj" -c Release -o /app/publish

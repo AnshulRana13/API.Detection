@@ -14,7 +14,7 @@ COPY *.csproj ./
 RUN dotnet restore "Detectify.ServerDetection.API.Web.csproj"
 COPY . .
 WORKDIR "/src/Detectify.ServerDetection.API.Host"
-RUN dotnet build "Detectify.ServerDetection.API.Web.csproj" -c Release -o /app/build
+RUN dotnet publish -c Release -o out
 
 FROM build AS publish
 RUN dotnet publish "Detectify.ServerDetection.API.Web.csproj" -c Release -o /app/publish

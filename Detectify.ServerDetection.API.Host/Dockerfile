@@ -12,7 +12,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 
 COPY ["Detectify.ServerDetection.API.Web.csproj", "Detectify.ServerDetection.API.Web"]
-RUN dotnet restore "Detectify.ServerDetection.API.Web/Detectify.ServerDetection.API.Web.csproj"
+RUN dotnet restore "Detectify.ServerDetection.API.Web.csproj"
 COPY . .
 WORKDIR "/src/Detectify.ServerDetection.API.Web"
 RUN dotnet build "Detectify.ServerDetection.API.Web.csproj" -c Release -o /app/build

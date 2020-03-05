@@ -46,7 +46,8 @@ namespace Detectify.ServerDetection.API.Web
             services.AddDependencyInjectionContainer();
             services.AddAppVersioning();
             services.AddSwaggerGen();
-            //services.AddSwaggerServiceConfiguration();
+            services.AddSession();
+            services.AddScaleoutDistributedCache(this.Configuration);
             services.AddControllers();
         }
 
@@ -62,6 +63,7 @@ namespace Detectify.ServerDetection.API.Web
             app.UseCors(CorsConfigurationService.ALLOW_ALL_ORIGINS_POLICY);   
             app.UseHttpsRedirection();
             app.UseExceptionHandlerService();
+            app.UseSession();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

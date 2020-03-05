@@ -14,6 +14,7 @@ namespace Detectify.ServerDetection.API.Entities
         public static string JWT_SymmetricSecurityKey { get; private set; }
         public static string JWT_Issuer { get; private set; }
         public static string JWT_Audience { get; private set; }
+        public static string ConnectionString_SOSS { get; private set; }
         public static void SetConfiguration(IConfiguration configuration)
         {
             ConnectionString_MongoDB = configuration.GetConnectionString("MongoDB");
@@ -23,6 +24,7 @@ namespace Detectify.ServerDetection.API.Entities
             JWT_SymmetricSecurityKey = configuration["JWT:SymmetricSecurityKey"];
             JWT_Issuer = configuration["JWT:Issuer"];
             JWT_Audience = configuration["JWT:Audience"];
+            ConnectionString_SOSS = configuration["ScaleOutStateServer:gateways"];
         }
 
 
